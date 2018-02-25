@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Friend Finder - Survey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+
+</head>
+
+<body>
+  <!-- Image and text -->
+  <nav class="navbar navbar-light bg-dark">
+    <a class="navbar-brand mx-auto" href="#">Friend Finder</a>
+  </nav>
+
+  <div style="container">
+    <div class="row mx-auto p-5">
+      <section class="page-section col-12 justify-content-center">
+        <form>
+          <div class="form-group">
+            <label for="name">Name (Required)</label>
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="photoLink">Link to Image (Required)</label>
+            <input type="text" class="form-control" id="photoLink" placeholder="Enter URL">
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q1">Question 1</label></strong>
+            <p>Your mind is always buzzing with unexplored ideas and plans.</p>
+            <select data-placeholder="" class="form-control" id="q1">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <strong><label for="q2">Question 2</label></strong>
+            <p>Generally speaking, you rely more on your experience than your imagination.</p>
+            <select data-placeholder="" class="form-control" id="q2">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q3">Question 3</label></strong>
+            <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
+            <select data-placeholder="" class="form-control" id="q3">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q4">Question 4</label></strong>
+            <p>You rarely do something just out of sheer curiosity.</p>
+            <select data-placeholder="" class="form-control" id="q4">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q5">Question 5</label></strong>
+            <p>People can rarely upset you.</p>
+            <select data-placeholder="" class="form-control" id="q5">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q6">Question 6</label></strong>
+            <p>It is often difficult for you to relate to other people’s feelings.</p>
+            <select data-placeholder="" class="form-control" id="q6">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q7">Question 7</label></strong>
+            <p>In a discussion, truth should be more important than people’s sensitivities.</p>
+            <select data-placeholder="" class="form-control" id="q7">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q8">Question 8</label></strong>
+            <p>You rarely get carried away by fantasies and ideas.</p>
+            <select data-placeholder="" class="form-control" id="q8">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q9">Question 9</label></strong>
+            <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
+            <select data-placeholder="" class="form-control" id="q9">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <strong><label for="q10">Question 10</label></strong>
+            <p>You feel more energetic after spending time with a group of people.</p>
+            <select data-placeholder="" class="form-control" id="q10">
+              <option value="" selected disabled>Select an Option</option>
+              <option value="1">1 (Strongly Disagree)</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 (Strongly Agree)</option>
+            </select>
+          </div>
+
+          <center><button type="submit">Submit</button></center>
+        </form>
+      </section>
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
