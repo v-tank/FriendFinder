@@ -13,9 +13,13 @@
   color: #fe9a8b !important;
 }
 
+h3 {
+  font-family: "chalet-new-york-nineteen-seventy";
+  color: #666;
+}
+
 h4 {
-  font-family: 'Source Sans Pro',
-  sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 60px;
   color: #444;
 }
