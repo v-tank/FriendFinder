@@ -1,13 +1,13 @@
 var friendsArray = [
   {
     "name": "Vaibhav",
-    "photo": "https://github.com/v-tank/Find-Your-Nature/blob/master/assets/images/vaibhav.png",
+    "photo": "https://v-tank.github.io/img/prof-pic.png",
     "scores": [1, 4, 2, 3, 5, 4, 3, 5, 5, 2] 
   },
   {
     "name": "Tom",
     "photo": "https://the-hollywood-gossip-res.cloudinary.com/iu/s--F_0FMLvw--/t_xlarge_p/cs_srgb,f_auto,fl_strip_profile.lossy,q_auto:420/v1517600897/tom-cruise-in-all-black.jpg",
-    "scores": [5, 1, 4, 4, 5, 1, 2, 5, 4, 1]
+    "scores": [5, 1, 4, 4, 3, 1, 2, 5, 4, 1]
   },
   {
     "name": "Leo",
