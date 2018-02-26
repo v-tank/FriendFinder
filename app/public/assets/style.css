@@ -47,3 +47,6 @@ select option[disabled]:first-child {
   display: none;
 }
 
+.img-circle {
+  border-radius: 50%;
+}
