@@ -4,10 +4,21 @@ var friendsData = require("../data/friends.js");
 
 module.exports = function(app) {
   app.get("/api/friends", function(req, res) {
-    res.send("Hello! Friends JSON data will go here. Will need to change method to JSON instead of SEND.");
+    res.json(friendsData);
   })
 
-  app.post("/api/friends", function(req, res) {
-    res.send("Hello! This will handle the incoming survey results and handle the compatibility logic.");
+  app.post("/api/friends", function (req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    // This works because of our body-parser middleware
+    var newUser = req.body;
+    // newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
+
+    // console.log(newUser);
+
+    friendsData.push(newUser);
+
+    console.log(friendsData);
+
+    res.json(newUser);
   });
 }
