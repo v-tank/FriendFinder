@@ -8,10 +8,7 @@ module.exports = function(app) {
   })
 
   app.post("/api/friends", function (req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    // This works because of our body-parser middleware
     var newUser = req.body;
-    // newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newUser);
 
@@ -19,13 +16,14 @@ module.exports = function(app) {
     var returnedResult = calculateCompatibility(newUser, friendsData);
     var name = friendsData[returnedResult[0]].name;
     var photoLink = friendsData[returnedResult[0]].photo;
-    // console.log("The closest match is " + name + "; he looks pretty handsome! " + photoLink);
     
     friendsData.push(newUser);
 
-    returnedResult = {name: name, 
-      photo: photoLink};
-    // console.log(friendsData);
+    returnedResult = 
+    {
+      name: name, 
+      photo: photoLink
+    };
 
     res.json(returnedResult);
   });
