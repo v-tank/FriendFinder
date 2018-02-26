@@ -9,7 +9,14 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:600" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/style.css">
 
 </head>
@@ -17,7 +24,7 @@
 <body>
   <!-- Image and text -->
   <nav class="navbar navbar-light bg-dark">
-    <a class="navbar-brand mx-auto" href="#">Friend Finder</a>
+    <a class="navbar-brand mx-auto" href="/">Friend Finder</a>
   </nav>
 
   <div style="container">
@@ -163,19 +170,61 @@
             </select>
           </div>
 
-          <center><button type="submit">Submit</button></center>
+          <center><button type="submit" class="submit">Submit</button></center>
         </form>
       </section>
     </div>
   </div>
 
+  <div class="modal fade" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Best Match</h4>
+        </div>
+        <div class="modal-body">
+          <center>
+            <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R" name="aboutme"
+              width="140" height="140" border="0" class="img-circle">
+            <h3 class="media-heading" id="matchName">Joe Sixpack</h3>
+          </center>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+          <hr>
+          
+          <center>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
-
 </html>
+
+<script type="text/javascript">
+
+  $(".submit").on("click", function (event) {
+    event.preventDefault();
+
+    // Here we grab the form elements
+    var formData = {
+      name: $("#name").val(),
+      photo: $("#photoLink").val(),
+      scores: [$("#q1").val().trim(), $("#q2").val().trim(), $("#q3").val().trim(), $("#q4").val().trim(), $("#q5").val().trim(), $("#q6").val().trim(), $("#q7").val().trim(), $("#q8").val().trim(), $("#q9").val().trim(), $("#q10").val().trim()]
+    };
+
+    // console.log(userData);
+
+    var url = window.location.origin;
+
+    // $("#matchModal").modal('toggle');
+
+    $.post(url + "/api/friends", formData)
+    .done(function(data) {
+      // console.log("Here's the data from the post: " + data);
+      alert("Calculating the best match...");
+    });
+
+  });
+</script>
