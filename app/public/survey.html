@@ -30,7 +30,7 @@
     <div class="row mx-auto p-5">
       <section class="page-section col-12 justify-content-center">
         <form>
-          <h3>About You</h3>
+          <h2>About You</h2>
           <br>
 
           <div class="form-group">
@@ -41,9 +41,23 @@
             <label for="photoLink"><strong>Link to Image</strong> (Required)</label>
             <input type="text" class="form-control" id="photoLink" placeholder="Enter URL">
           </div>
+
+          <h5>I am a (sex): </h5>
+          <label class="switch switch-yes-no">
+            <input class="switch-sex" type="checkbox" />
+            <span class="switch-label" id="sex-label" data-on="Male" data-off="Female"></span>
+            <span class="switch-handle"></span>
+          </label>
+          <br>
+          <h5>Interested in: </h5>
+          <label class="switch switch-yes-no">
+            <input class="switch-input" type="checkbox" />
+            <span class="switch-label" id="interestedIn-label" data-on="Men" data-off="Women"></span>
+            <span class="switch-handle"></span>
+          </label>
           
           <br><hr><br>
-          <h3>Questionnaire</h3>
+          <h2>Questionnaire</h2>
           <br>
 
           <div class="form-group">
@@ -204,32 +218,73 @@
     </div>
   </div>
 
+  <hr>
+  <footer class="footer">
+    <div class="container text-center">
+        <p><a href="/api/friends">API Friends List</a></p>
+    </div>
+  </footer>
+
 </body>
 </html>
 
 <script type="text/javascript">
 
-  $(".submit").on("click", function (event) {
-    event.preventDefault();
+  $(document).ready(function () {
+    var interestedIn = $('#interestedIn-label').attr('data-off');
+    var sex = $('#sex-label').attr('data-off');
 
-    // Here we grab the form elements
-    var formData = {
-      name: $("#name").val(),
-      photo: $("#photoLink").val(),
-      scores: [$("#q1").val().trim(), $("#q2").val().trim(), $("#q3").val().trim(), $("#q4").val().trim(), $("#q5").val().trim(), $("#q6").val().trim(), $("#q7").val().trim(), $("#q8").val().trim(), $("#q9").val().trim(), $("#q10").val().trim()]
-    };
+    $('.switch-input').on('change', function () {
+      var isChecked = $(this).is(':checked');
+      var $switchLabel = $('#interestedIn-label');
+      // console.log('isChecked: ' + isChecked);
+      if (isChecked) {
+        interestedIn = $switchLabel.attr('data-on');
+      } else {
+        interestedIn = $switchLabel.attr('data-off');
+      }
 
-    var url = window.location.origin;
+      console.log('Interested in: ' + interestedIn);
 
-    $.post(url + "/api/friends", formData)
-    .done(function(data) {
-
-      $("#matchName").text(data.name);
-      $('#matchImg').attr("src", data.photo);
-
-      // Show the modal with the best match 
-      $("#matchModal").modal('toggle');
     });
 
+    $('.switch-sex').on('change', function () {
+      var isChecked = $(this).is(':checked');
+      var $switchLabel = $('#sex-label');
+      // console.log('isChecked: ' + isChecked);
+      if (isChecked) {
+        sex = $switchLabel.attr('data-on');
+      } else {
+        sex = $switchLabel.attr('data-off');
+      }
+
+      console.log('Sex: ' + sex);
+
+    });
+
+    $(".submit").on("click", function (event) {
+      event.preventDefault();
+
+      // Here we grab the form elements
+      var formData = {
+        name: $("#name").val(),
+        photo: $("#photoLink").val(),
+        sex: sex,
+        interestedIn: interestedIn,
+        scores: [$("#q1").val().trim(), $("#q2").val().trim(), $("#q3").val().trim(), $("#q4").val().trim(), $("#q5").val().trim(), $("#q6").val().trim(), $("#q7").val().trim(), $("#q8").val().trim(), $("#q9").val().trim(), $("#q10").val().trim()]
+      };
+
+      var url = window.location.origin;
+
+      $.post(url + "/api/friends", formData)
+        .done(function (data) {
+
+          $("#matchName").text(data.name);
+          $('#matchImg').attr("src", data.photo);
+
+          // Show the modal with the best match 
+          $("#matchModal").modal('toggle');
+      });
+    });
   });
 </script>
