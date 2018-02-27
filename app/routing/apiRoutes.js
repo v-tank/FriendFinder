@@ -9,16 +9,46 @@ module.exports = function(app) {
 
   app.post("/api/friends", function (req, res) {
     var newUser = req.body;
+    var returnedResult;
+    var name;
+    var photoLink;
+    var menArray = [];
+    var womenArray = [];
 
     console.log(newUser);
 
-    // Call function here!!!!!!!!!
-    var returnedResult = calculateCompatibility(newUser, friendsData);
-    var name = friendsData[returnedResult[0]].name;
-    var photoLink = friendsData[returnedResult[0]].photo;
+    if (newUser.interestedIn === "Women") {
+      for (var i = 0; i < friendsData.length; i++) {
+        if (friendsData[i].sex === "Female") {
+          womenArray.push(friendsData[i]);
+        }
+      }
+      // console.log("Here are the women:");
+      // console.log(womenArray);
+
+      returnedResult = calculateCompatibility(newUser, womenArray);
+
+      name = womenArray[returnedResult[0]].name;
+      photoLink = womenArray[returnedResult[0]].photo;
+    }
+
+    if (newUser.interestedIn === "Men") {
+      for (var i = 0; i < friendsData.length; i++) {
+        if (friendsData[i].sex === "Male") {
+          menArray.push(friendsData[i]);
+        }
+      }
+      // console.log("Here are the men:");
+      // console.log(menArray);
+
+      returnedResult = calculateCompatibility(newUser, menArray);
+
+      name = menArray[returnedResult[0]].name;
+      photoLink = menArray[returnedResult[0]].photo;
+    }
     
     friendsData.push(newUser);
-
+  
     returnedResult = 
     {
       name: name, 
@@ -26,15 +56,15 @@ module.exports = function(app) {
     };
 
     res.json(returnedResult);
-  });
+  }); 
 
-  function calculateCompatibility(newUser, friendsData) {
+  function calculateCompatibility(newUser, arrayForComparison) {
     var calculatedScores = [];
-    for (var i = 0; i < friendsData.length; i++) {
+    for (var i = 0; i < arrayForComparison.length; i++) {
       var difference = 0;
-      for (var j = 0; j < friendsData[i].scores.length; j++) {
+      for (var j = 0; j < arrayForComparison[i].scores.length; j++) {
         newUser.scores[j] = parseInt(newUser.scores[j]);
-        var jthDifference = Math.abs(newUser.scores[j] - friendsData[i].scores[j]);
+        var jthDifference = Math.abs(newUser.scores[j] - arrayForComparison[i].scores[j]);
         difference += jthDifference;
         // console.log(friendsData[i].scores[j] + "; " + jthDifference);
       }
@@ -43,6 +73,7 @@ module.exports = function(app) {
         difference: difference, 
         index: i});
     }
+
     // console.log("\nHere are the scores and the indices:");
     // console.log(calculatedScores);
     // console.log("\n");
@@ -61,6 +92,7 @@ module.exports = function(app) {
         index = i;
       }
     }
+
     return [index, min];
   }
 
