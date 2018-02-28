@@ -37,4 +37,4 @@ var friendsArray = [
   }
 ];
 
-module.exports = friendsArray;
+module.exports = friendsArray; // Export the array to access in other files
