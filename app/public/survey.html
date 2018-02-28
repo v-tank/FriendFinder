@@ -29,6 +29,9 @@
   <div style="container">
     <div class="row mx-auto p-5">
       <section class="page-section col-12 justify-content-center">
+
+        <!-- Begin Form -->
+
         <form id="form">
           <h2>About You</h2>
           <br>
@@ -196,6 +199,7 @@
     </div>
   </div>
 
+  <!-- Modal to display for the match -->
   <div class="modal fade" id="matchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -231,9 +235,11 @@
 <script type="text/javascript">
 
   $(document).ready(function () {
+    // Initializes button value to 'off' (women)
     var interestedIn = $('#interestedIn-label').attr('data-off');
     var sex = $('#sex-label').attr('data-off');
-
+    
+    // Grabs the value to see what the user is interested in
     $('.switch-input').on('change', function () {
       var isChecked = $(this).is(':checked');
       var $switchLabel = $('#interestedIn-label');
@@ -244,10 +250,11 @@
         interestedIn = $switchLabel.attr('data-off');
       }
 
-      console.log('Interested in: ' + interestedIn);
+      // console.log('Interested in: ' + interestedIn);
 
     });
-
+    
+    // Grabs the value for user's sex
     $('.switch-sex').on('change', function () {
       var isChecked = $(this).is(':checked');
       var $switchLabel = $('#sex-label');
@@ -258,46 +265,50 @@
         sex = $switchLabel.attr('data-off');
       }
 
-      console.log('Sex: ' + sex);
+      // console.log('Sex: ' + sex);
 
     });
-
+    
+    // Listener for the submit button
     $(".submit").on("click", function (event) {
       event.preventDefault();
+      
       var dataIsValid = false;
 
-      dataIsValid = formValidation();
+      dataIsValid = formValidation(); // Perform validation
       
-      if (dataIsValid) {
+      if (dataIsValid) { // If data is valid, proceed with the match-making
         // Here we grab the form elements
         var formData = {
           name: $("#name").val(),
           photo: $("#photoLink").val(),
           sex: sex,
           interestedIn: interestedIn,
-          scores: [$("#q1").val().trim(), $("#q2").val().trim(), $("#q3").val().trim(), $("#q4").val().trim(), $("#q5").val().trim(), $("#q6").val().trim(), $("#q7").val().trim(), $("#q8").val().trim(), $("#q9").val().trim(), $("#q10").val().trim()]
+          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
         };
 
         var url = window.location.origin;
 
-        $.post(url + "/api/friends", formData)
+        $.post(url + "/api/friends", formData) // Post the object to a pre-defined route
           .done(function (data) {
 
-            $("#matchName").text(data.name);
-            $('#matchImg').attr("src", data.photo);
+            $("#matchName").text(data.name); // Display the returned name
+            $('#matchImg').attr("src", data.photo); // Display the returned photo
 
             // Show the modal with the best match 
             $("#matchModal").modal('toggle');
-            document.getElementById("form").reset();
+            document.getElementById("form").reset(); // Resets the form values
         });
       } 
     });
-
+    
+    // Function to validate form entries
     function formValidation() {
-      var validURL = is_url($("#photoLink").val().trim());
-      var validName = /^[A-Za-z\s]+$/.test($("#name").val().trim());
-      var validSelects = validateSelects();
-
+      var validURL = is_url($("#photoLink").val().trim()); // Checks if the photo URL is valid
+      var validName = /^[A-Za-z\s]+$/.test($("#name").val().trim()); // Checks if the name is valid
+      var validSelects = validateSelects(); // Checks if each select menu has a value
+      
+      // Alert if either of those conditions is not met
       if (!validSelects) {
         alert("Please make sure that you've selected an answer for each question.");
       }
@@ -310,14 +321,14 @@
         alert("Please enter a valid URL.");
       }
 
-      if ((validURL) && (validName) && (validSelects)) {
+      if ((validURL) && (validName) && (validSelects)) { // If all are valid, return true
         return true;
       } else {
         return false;
       }
     }
     
-    function validateSelects() {
+    function validateSelects() { // Function to go through each select menu to see if it has a value
       var isValid = true;
       $('.valid-select').each(function () {
 
@@ -328,7 +339,8 @@
       return isValid;
     }
 
-    function is_url(str) {
+    function is_url(str) { // RegEx function to check if URL is valid 
+      
       regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
       if (regexp.test(str)) {
         return (true);
