@@ -6,6 +6,7 @@
 2. [Installation](#installation)
 3. [Initializing](#initializing)
 	- [Local Server](#local-server)
+	- [Heroku](#heroku)
 4. [How It Works](#how-it-works)
 
 <a name="overview"></a>
@@ -56,8 +57,12 @@ There are two ways to run this application. The user can either run the applicat
 	```
 	node server.js
 	```
-
 3. Open the browser and connect to [PORT 8080 of the local host](http://localhost:8080/) to reach the homepage.
+
+<a name="heroku"></a>
+### Heroku
+
+1. Open the browser and go to the deployed [Heroku](https://friend-finder-vt.herokuapp.com/) application to reach the homepage.
 
 ## How It Works
 
