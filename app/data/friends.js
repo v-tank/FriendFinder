@@ -1,3 +1,4 @@
+// Array to hold friend objects
 var friendsArray = [
   {
     "name": "Vaibhav",
