@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Friend Finder - Survey</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <link rel="stylesheet" href="assets/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
 
@@ -29,17 +29,17 @@
   <div style="container">
     <div class="row mx-auto p-5">
       <section class="page-section col-12 justify-content-center">
-        <form>
+        <form id="form">
           <h2>About You</h2>
           <br>
 
           <div class="form-group">
             <label for="name"><strong>Name</strong> (Required)</label>
-            <input type="text" class="form-control" id="name" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="name" aria-describedby="emailHelp" required>
           </div>
           <div class="form-group">
             <label for="photoLink"><strong>Link to Image</strong> (Required)</label>
-            <input type="text" class="form-control" id="photoLink" placeholder="Enter URL">
+            <input type="text" class="form-control" id="photoLink" placeholder="Enter URL" required>
           </div>
 
           <h5>I am a (sex): </h5>
@@ -63,7 +63,7 @@
           <div class="form-group">
             <strong><label for="q1">Question 1</label></strong>
             <p>Your mind is always buzzing with unexplored ideas and plans.</p>
-            <select data-placeholder="" class="form-control" id="q1">
+            <select data-placeholder="" class="form-control valid-select" id="q1">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -76,7 +76,7 @@
           <div class="form-group">
             <strong><label for="q2">Question 2</label></strong>
             <p>Generally speaking, you rely more on your experience than your imagination.</p>
-            <select data-placeholder="" class="form-control" id="q2">
+            <select data-placeholder="" class="form-control valid-select" id="q2">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -89,7 +89,7 @@
           <div class="form-group">
             <strong><label for="q3">Question 3</label></strong>
             <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
-            <select data-placeholder="" class="form-control" id="q3">
+            <select data-placeholder="" class="form-control valid-select" id="q3">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -102,7 +102,7 @@
           <div class="form-group">
             <strong><label for="q4">Question 4</label></strong>
             <p>You rarely do something just out of sheer curiosity.</p>
-            <select data-placeholder="" class="form-control" id="q4">
+            <select data-placeholder="" class="form-control valid-select" id="q4">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -115,7 +115,7 @@
           <div class="form-group">
             <strong><label for="q5">Question 5</label></strong>
             <p>People can rarely upset you.</p>
-            <select data-placeholder="" class="form-control" id="q5">
+            <select data-placeholder="" class="form-control valid-select" id="q5">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -128,7 +128,7 @@
           <div class="form-group">
             <strong><label for="q6">Question 6</label></strong>
             <p>It is often difficult for you to relate to other people’s feelings.</p>
-            <select data-placeholder="" class="form-control" id="q6">
+            <select data-placeholder="" class="form-control valid-select" id="q6">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -141,7 +141,7 @@
           <div class="form-group">
             <strong><label for="q7">Question 7</label></strong>
             <p>In a discussion, truth should be more important than people’s sensitivities.</p>
-            <select data-placeholder="" class="form-control" id="q7">
+            <select data-placeholder="" class="form-control valid-select" id="q7">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -154,7 +154,7 @@
           <div class="form-group">
             <strong><label for="q8">Question 8</label></strong>
             <p>You rarely get carried away by fantasies and ideas.</p>
-            <select data-placeholder="" class="form-control" id="q8">
+            <select data-placeholder="" class="form-control valid-select" id="q8">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -167,7 +167,7 @@
           <div class="form-group">
             <strong><label for="q9">Question 9</label></strong>
             <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
-            <select data-placeholder="" class="form-control" id="q9">
+            <select data-placeholder="" class="form-control valid-select" id="q9">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -180,7 +180,7 @@
           <div class="form-group">
             <strong><label for="q10">Question 10</label></strong>
             <p>You feel more energetic after spending time with a group of people.</p>
-            <select data-placeholder="" class="form-control" id="q10">
+            <select data-placeholder="" class="form-control valid-select" id="q10">
               <option value="" selected disabled>Select an Option</option>
               <option value="1">1 (Strongly Disagree)</option>
               <option value="2">2</option>
@@ -264,27 +264,78 @@
 
     $(".submit").on("click", function (event) {
       event.preventDefault();
+      var dataIsValid = false;
 
-      // Here we grab the form elements
-      var formData = {
-        name: $("#name").val(),
-        photo: $("#photoLink").val(),
-        sex: sex,
-        interestedIn: interestedIn,
-        scores: [$("#q1").val().trim(), $("#q2").val().trim(), $("#q3").val().trim(), $("#q4").val().trim(), $("#q5").val().trim(), $("#q6").val().trim(), $("#q7").val().trim(), $("#q8").val().trim(), $("#q9").val().trim(), $("#q10").val().trim()]
-      };
+      dataIsValid = formValidation();
+      
+      if (dataIsValid) {
+        // Here we grab the form elements
+        var formData = {
+          name: $("#name").val(),
+          photo: $("#photoLink").val(),
+          sex: sex,
+          interestedIn: interestedIn,
+          scores: [$("#q1").val().trim(), $("#q2").val().trim(), $("#q3").val().trim(), $("#q4").val().trim(), $("#q5").val().trim(), $("#q6").val().trim(), $("#q7").val().trim(), $("#q8").val().trim(), $("#q9").val().trim(), $("#q10").val().trim()]
+        };
 
-      var url = window.location.origin;
+        var url = window.location.origin;
 
-      $.post(url + "/api/friends", formData)
-        .done(function (data) {
+        $.post(url + "/api/friends", formData)
+          .done(function (data) {
 
-          $("#matchName").text(data.name);
-          $('#matchImg').attr("src", data.photo);
+            $("#matchName").text(data.name);
+            $('#matchImg').attr("src", data.photo);
 
-          // Show the modal with the best match 
-          $("#matchModal").modal('toggle');
-      });
+            // Show the modal with the best match 
+            $("#matchModal").modal('toggle');
+            document.getElementById("form").reset();
+        });
+      } 
     });
+
+    function formValidation() {
+      var validURL = is_url($("#photoLink").val().trim());
+      var validName = /^[A-Za-z\s]+$/.test($("#name").val().trim());
+      var validSelects = validateSelects();
+
+      if (!validSelects) {
+        alert("Please make sure that you've selected an answer for each question.");
+      }
+
+      if (!validName) {
+        alert("Please enter a valid name.");
+      }
+
+      if (!validURL) {
+        alert("Please enter a valid URL.");
+      }
+
+      if ((validURL) && (validName) && (validSelects)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    
+    function validateSelects() {
+      var isValid = true;
+      $('.valid-select').each(function () {
+
+        if ($(this).val() === null) {
+          isValid = false
+        }
+      })
+      return isValid;
+    }
+
+    function is_url(str) {
+      regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+      if (regexp.test(str)) {
+        return (true);
+      }
+      else {
+        return (false);
+      }
+    }
   });
 </script>
